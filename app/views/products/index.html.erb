@@ -3,3 +3,11 @@
 <li><a href="category"> Category </a></li>
 <li><a href="#"> Products  </a></li>
 </ul>
+
+<ul>
+<% @products.each do |product|%>
+<li> <%= product.name %></li>
+<p> <strong> Description </strong> <%= product.description %><br>
+    <strong>Price: </strong> <%= product.price %> </p>
+<% end %>
+</ul>
