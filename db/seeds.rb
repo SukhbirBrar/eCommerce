@@ -15,7 +15,7 @@ Category.destroy_all
 5.times do
   temp = Category.create(name: Faker::Commerce.department)
 
-  15.times do
+  20.times do
     temp.products.create(
       name: Faker::Commerce.product_name,
       description: Faker::Commerce.material,

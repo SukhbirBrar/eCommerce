@@ -3,9 +3,8 @@
     <% @results.each do |result| %>
        <ul>
  <li> <%= result.name %> </li>
- <p> <%= image_tag result.image %>
-  <strong> Description </strong><%= result.description %>
+  <%= image_tag result.image %>
+ <p> <strong> Description </strong><%= result.description %>
   <strong> Price </strong><%= result.price %> </p>
-
 </ul>
     <% end %>

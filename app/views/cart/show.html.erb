@@ -1,0 +1,23 @@
+<% if !@order_items.nil? && @order_items.errors.any? %>
+
+ <ul>
+  <% @order_items.errros.full_messages.each do |msg|%>
+ <li> <%= msg %>
+  <% end%>
+ </ul>
+
+ <% if @order_items.size > 0 %>
+  <% @order_items.each do |item| %>
+   <h3> <%= item.product.name %> </h3>
+    <%= form_for(item, remote : true ) do |f| %>
+     <%= f.hidden_field :product_id , value: item.product.id %>
+     <h5> <%= item.product.price %> </h5>
+     <%= f.text_field :quantity, value = order_item.quantity.to_1, min:1, %>
+     <%= f.submit "Update quantity " %>
+     <%= link_to "Delete", item, method: delete, remote: true%>
+     <span> Total Price: <<%= item.total_price %> </span>
+     <% end %>
+ <% end %>
+ <% else %>
+
+<% end %>

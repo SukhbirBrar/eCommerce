@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-
   def show; end
 
   def page_params
@@ -13,7 +12,7 @@ class PagesController < ApplicationController
       redirect_to(root_path, alert: 'Empty field!') && return
     else
       @parameter = params[:search].downcase
-      @results = Category.where('lower(name) LIKE :search', search: "%#{@parameter}%")
+      @results = Product.where('lower(name) LIKE :search', search: "%#{@parameter}%")
   end
 end
 end
