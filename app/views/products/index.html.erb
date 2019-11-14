@@ -1,14 +1,27 @@
-<h1> Library  </h1>
-<ul>
-<li><a href="category"> Category </a></li>
-<li><a href="#"> Products  </a></li>
-</ul>
 
+
+<h1> Category Name: <%=  @category.name %></h1>
 <ul class="product-display" >
-<% @products.each do |product|%>
-<%= image_tag product.image%>
-<li> <%= product.name %></li>
-<p> <strong> Description </strong> <%= product.description %><br>
-    <strong>Price: </strong> <%= product.price %> </p>
+<%= form_tag(search_page_path, :method => "get",
+    class: 'navbar-form navbar-left') do %>
+  <div class="input-group">
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+     <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+      <li class="divider"></li>
+      <li><a href="#">About Us</a></li>
+    </ul>
+  </div>
+    <div class="input-group-btn">
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+    </div>
+  </div>
 <% end %>
+<%= paginate @products %>
+<%= render @products %>
 </ul>
