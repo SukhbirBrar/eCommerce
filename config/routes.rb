@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # get 'category/index'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # get 'products/index'
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
   resources :pages
   resources :order_items
   resource :carts, only: [:show]
-
+  resources :contacts
+  resources :companies
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
