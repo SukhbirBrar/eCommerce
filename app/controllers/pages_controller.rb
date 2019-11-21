@@ -10,9 +10,11 @@ class PagesController < ApplicationController
   def search
     if params[:search].blank?
       redirect_to(root_path, alert: 'Empty field!') && return
-    else
+    elsif
       @parameter = params[:search].downcase
       @results = Product.where('lower(name) LIKE :search', search: "%#{@parameter}%")
+    else
+      @category = Category.search(params[:id])
+    end
   end
-end
 end

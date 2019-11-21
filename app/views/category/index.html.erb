@@ -2,7 +2,7 @@
 
 <ul class="product-display" >
 <%= form_tag(search_page_path, :method => "get",
-    class: 'navbar-form navbar-left') do %>
+    class: 'navbar-form navbar-left') do |s| %>
   <div class="input-group">
     <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
      <div class="dropdown">
@@ -10,6 +10,9 @@
 
     <div class="dropdown-content">
       <% @categories.each do |category|%>
+     <%# <%= select_tag(:id, options_for_select(Category.where(:id).map {
+       |s| [s.id]
+     })) %> 
       <option> <%= link_to category.name %></option>
       <% end %>
     </div>

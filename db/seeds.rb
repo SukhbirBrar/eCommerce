@@ -11,6 +11,7 @@
 AdminUser.destroy_all
 Product.destroy_all
 Category.destroy_all
+Contact.destroy_all
 
 5.times do
   temp = Category.create(name: Faker::Commerce.department)
@@ -26,3 +27,5 @@ Category.destroy_all
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Contact.create!(name: 'Brar', email: 'brar@gmail.com', phone_number: '4562453698') 

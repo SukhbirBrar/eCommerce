@@ -5,6 +5,7 @@ ruby '2.6.3'
 
 gem 'carrierwave'
 gem 'faker'
+gem 'stripe'
 
 gem 'kaminari'
 
