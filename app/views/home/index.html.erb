@@ -4,6 +4,20 @@
 <%= link_to "Contact", contacts_path(@contacts_path)%>
 <%= link_to "About Us", companies_path(@companies_path)%>
 
+<%# array = ["Sale", "New Arrivals"] %>
+<%= form_tag filter_something_path do %>
+<%= select_tag :value, options_for_select(@products, 'name') %>
+<%= submit_tag "Filter" %>
+
+
+<div>
+<select> <%= link_to "Filter", method: :filter %>
+<option value = "1"> Sale </option>
+<option value = "2"> New Arrived </option>
+</select>
+<input type="submit", value="submit">
+</div>
+<% end %>
 
 <% @products.each do |product| %>
 	<div class="well">
@@ -16,6 +30,7 @@
 				<%= form_for(@order_item, remote: true) do |f| %>
 					<%= f.hidden_field :product_id, value: product.id %>
 					<h5><%= product.price %></h5>
+					<%= image_tag product.image %>
 					<div class="form-group">
 					<input type = "number" value: 1, min: 1 <%=f.text_field :quantity %>
 						<%# <%= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>

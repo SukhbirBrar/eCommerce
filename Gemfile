@@ -7,7 +7,11 @@ gem 'carrierwave'
 gem 'faker'
 gem 'stripe'
 
+gem 'bootstrap'
+
 gem 'kaminari'
+
+gem 'rubocop'
 
 gem 'carrierwave'
 gem 'activeadmin'
