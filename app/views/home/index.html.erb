@@ -6,17 +6,9 @@
 
 <%# array = ["Sale", "New Arrivals"] %>
 <%= form_tag filter_something_path do %>
-<%= select_tag :value, options_for_select(@products, 'name') %>
+<%= select_tag :value, options_for_select([["Sale", "1"], ["New", "2"]]) %>
 <%= submit_tag "Filter" %>
 
-
-<div>
-<select> <%= link_to "Filter", method: :filter %>
-<option value = "1"> Sale </option>
-<option value = "2"> New Arrived </option>
-</select>
-<input type="submit", value="submit">
-</div>
 <% end %>
 
 <% @products.each do |product| %>
@@ -30,7 +22,10 @@
 				<%= form_for(@order_item, remote: true) do |f| %>
 					<%= f.hidden_field :product_id, value: product.id %>
 					<h5><%= product.price %></h5>
-					<%= image_tag product.image %>
+					<%# <%= image_tag product.image_url %>
+					<% if product.image? %>
+          <p><%= image_tag product.image.thumbnail.url %></p>
+           <% end %>
 					<div class="form-group">
 					<input type = "number" value: 1, min: 1 <%=f.text_field :quantity %>
 						<%# <%= f.text_field :quantity, value: 1, min: 1, class: 'form-control' %>

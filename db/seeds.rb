@@ -20,12 +20,10 @@ Contact.destroy_all
     temp.products.create(
       name: Faker::Commerce.product_name,
       description: Faker::Commerce.material,
-      price: Faker::Commerce.price,
-      image: Faker::Avatar.image
+      price: Faker::Commerce.price
     )
   end
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-Contact.create!(name: 'Brar', email: 'brar@gmail.com', phone_number: '4562453698') 

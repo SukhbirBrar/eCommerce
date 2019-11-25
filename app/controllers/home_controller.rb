@@ -7,10 +7,13 @@ class HomeController < ApplicationController
   end
 
   def filter
-    if params[:value] == '1'
-      @filter = Product.where(filter: "sale")
-    else
-      @filter = Product.where(filter: "new")
-    end
+    @order_item = current_order.order_items.new
+    @products = if params[:value] == '1'
+                Product.where(filter: 'Sale')
+                else
+                Product.where(filter: 'New')
+              end
+
+    render :index
   end
 end
