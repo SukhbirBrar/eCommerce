@@ -1,8 +1,9 @@
 <ul>
  <li> <%= @product.name %> </li>
  <p> <%= @product.description %>
-  <%= image_tag @product.image %>
-  <%= @product.price %> </p>
+<% if @product.image? %>
+          <p><%= image_tag @product.image.thumbnail.url %></p>
+           <% end %>  <%= @product.price %> </p>
   <input type="number" name="quantity" min= 1 >
   <input type = "submit" >
 
