@@ -10,10 +10,8 @@
 
     <div class="dropdown-content">
       <% @categories.each do |category|%>
-     <%# <%= select_tag(:id, options_for_select(Category.where(:id).map {
-       |s| [s.id]
-     })) %> 
-      <option> <%= link_to category.name %></option>
+     <%# <%= select_tag :id, options_for_select(@categories.name) %> %>
+      <option> <%= link_to category.name %> </option> 
       <% end %>
     </div>
     </select>
