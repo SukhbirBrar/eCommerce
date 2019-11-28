@@ -13,8 +13,9 @@ class PagesController < ApplicationController
     elsif
       @parameter = params[:search].downcase
       @results = Product.where('lower(name) LIKE :search', search: "%#{@parameter}%")
+      
     else
-      @category = Category.search(params[:id])
+      @category = Category.find(params[:id])
     end
   end
 end

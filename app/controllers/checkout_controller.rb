@@ -15,8 +15,18 @@ class CheckoutController < ApplicationController
         description: product.description,
         amount: (product.price * 100).to_i,
         currency: 'CAD',
-        quantity: 1
-      }],
+        quantity: 1,
+      },
+       [
+         type: (province.GST + province.PST)
+       ]],
+      shipping: {
+        email: 'brar@example.com',
+        address: {
+          city: 'Winnipeg',
+          state: 'MB'
+        }
+            },
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
