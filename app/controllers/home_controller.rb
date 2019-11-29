@@ -9,9 +9,9 @@ class HomeController < ApplicationController
   def filter
     @order_item = current_order.order_items.new
     @products = if params[:value] == '1'
-                Product.where(filter: 'Sale')
+                  Product.where(filter: 'Sale')
                 else
-                Product.where(filter: 'New')
+                  Product.where(filter: 'New')
               end
 
     render :index
