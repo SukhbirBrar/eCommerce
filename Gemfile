@@ -7,10 +7,11 @@ gem 'carrierwave'
 gem 'faker'
 gem 'stripe'
 gem 'bcrypt'
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.3.1'
 gem 'mini_magick'
 gem 'kaminari'
 
+gem 'slim-rails'
 gem 'rubocop'
 
 gem 'carrierwave'
