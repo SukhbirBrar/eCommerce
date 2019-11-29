@@ -26,11 +26,11 @@
     <%= f.text_field :name, autofocus: true %>
   </div>
 
-   <div class="field">
+  <div class="field">
     <%= f.label :address %><br />
-    <%= f.text_field :address, autofocus: true %>
+    <%= select("provinces", "id", Province.all.collect { |p| [ p.province_name, p.id ] }, { include_blank: 'Choose the province.' }) %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
