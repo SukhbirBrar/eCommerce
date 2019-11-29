@@ -7,7 +7,6 @@ class OrderItem < ApplicationRecord
   before_save :set_unit_price
   before_save :set_total_price
 
-
   def unit_price
     if persisted?
       self[:unit_price]
