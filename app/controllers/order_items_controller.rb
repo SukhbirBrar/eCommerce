@@ -14,7 +14,7 @@ class OrderItemsController < ApplicationController
     @order_item.update_attributes(order_items_params)
     @order_items = @order.order_items
     redirect_to carts_path
-  end
+    end
 
   def destroy
     @order = current_order

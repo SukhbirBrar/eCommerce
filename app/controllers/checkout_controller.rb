@@ -8,12 +8,6 @@ class CheckoutController < ApplicationController
       return
     end
 
-    province = Province.find(params[:id])
-    if province.nil?
-      redirect_to root_path
-      return
-    end
-
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
@@ -21,15 +15,22 @@ class CheckoutController < ApplicationController
         description: product.description,
         amount: (product.price * 100).to_i,
         currency: 'CAD',
-        quantity: 1
-      }],
-      type: [{
-        GST: province.GST,
-        PST: province.PST
-      }],
+        quantity: 1,
+      },
+       [
+         type: (province.GST + province.PST)
+       ]],
+      shipping: {
+        email: 'brar@example.com',
+        address: {
+          city: 'Winnipeg',
+          state: 'MB'
+        }
+            },
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
+
 
     respond_to do |format|
       format.js
