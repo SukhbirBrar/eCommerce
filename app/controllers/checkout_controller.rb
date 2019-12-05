@@ -4,7 +4,8 @@ class CheckoutController < ApplicationController
   def create
     product = Product.find(params[:id])
 
-    if product.nil? redirect_to root_path
+    if product.nil?
+      redirect_to root_path
       return
     end
 
