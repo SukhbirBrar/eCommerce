@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>ECommerce</title>
     <%= csrf_meta_tags %>
@@ -13,6 +13,11 @@
   </head>
 
   <body>
+  <h1> Ecommerce </h1>
+
+  <%= button_to "Cart", carts_path(@carts_path), class:"cart-button"%>
+<%= link_to "Contact", contacts_path(@contacts_path)%>
+<%= link_to "About Us", companies_path(@companies_path)%>
 <p class="navbar-text float-right">
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.

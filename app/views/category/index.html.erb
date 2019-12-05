@@ -1,17 +1,18 @@
-
-
-<ul class="product-display" >
 <%= form_tag(search_page_path, :method => "get",
     class: 'navbar-form navbar-left') do |s| %>
+
+
   <div class="input-group">
+
+
     <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
      <div class="dropdown">
       <select class="fa fa-caret-down">
 
     <div class="dropdown-content">
       <% @categories.each do |category|%>
-     <%# <%= select_tag :id, options_for_select(@categories.name) %> %>
-      <option> <%= link_to category.name %> </option> 
+     <%# <%= select_tag :id, options_for_select(@categories.name) %>
+      <option> <%= link_to category.name %> </option>
       <% end %>
     </div>
     </select>
@@ -21,5 +22,6 @@
     </div>
   </div>
 <% end %>
+<ul class="product-display" >
 <%= render partial: 'category/category', collection: @categories %>
 </ul>

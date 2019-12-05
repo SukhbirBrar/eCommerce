@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # get 'products/index'
-  root to: 'category#index'
+  # root to: 'category#index'
   scope '/checkout' do
     post 'create', to: 'checkout#create', as: 'checkout_create'
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
     get 'success', to: 'checkout#success', as: 'checkout_success'
   end
-  # root 'home#index'
+  root 'home#index'
   resources :categories, only: [:index]
 
   get 'pages/index'

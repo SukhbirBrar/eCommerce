@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= f.label :address %><br />
-    <%= select("provinces", "id", Province.all.collect { |p| [ p.province_name, p.id ] }, { include_blank: 'Choose the province.' }) %>
+    <%= f.select("province_id", Province.all.collect { |p| [ p.province_name, p.id ] }, { include_blank: 'Choose the province.' }) %>
   </div>
 
   <div class="actions">
