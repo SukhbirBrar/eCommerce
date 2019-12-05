@@ -13,7 +13,10 @@ class PagesController < ApplicationController
     else
       @search_id = params[:category]
       @parameter = params[:search].downcase
-      @results = Product.includes(:category).where('lower(name) LIKE :search', search: "%#{@parameter}%").where(category_id: @search_id)
+      @ctaegory_product = 'lower(name) LIKE :search', search: "%#{@parameter}%"
+      @results = Product.includes(:category).where(@ctaegory_product).where(category_id: @search_id)
+
+      # @results = Product.includes(:category).where('lower(name) LIKE :search', search: "%#{@parameter}%").where(category_id: @search_id)
       # @results = Product.where('lower(name) LIKE :search', search: "%#{@parameter}%")
     end
   end
