@@ -3,8 +3,8 @@
 class CheckoutController < ApplicationController
   def create
     product = Product.find(params[:id])
-    if product.nil?
-      redirect_to root_path
+
+    if product.nil? redirect_to root_path
       return
     end
 
@@ -15,22 +15,25 @@ class CheckoutController < ApplicationController
         description: product.description,
         amount: (product.price * 100).to_i,
         currency: 'CAD',
-        quantity: 1,
+        quantity: 1
       },
-       [
-         type: (province.GST + province.PST)
-       ]],
-      shipping: {
-        email: 'brar@example.com',
-        address: {
-          city: 'Winnipeg',
-          state: 'MB'
-        }
-            },
+                   {
+                     name: 'PST',
+                     description: 'Manitoba Provincial Sales Tax',
+                     amount: (product.price * 7 / 100.0).round.to_i,
+                     currency: 'cad',
+                     quantity: 1
+                   },
+                   {
+                     name: 'GST',
+                     description: 'Federal Goods and Services Tax',
+                     amount: (product.price * 5 / 100.0).round.to_i,
+                     currency: 'cad',
+                     quantity: 1
+                   }],
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
-
 
     respond_to do |format|
       format.js

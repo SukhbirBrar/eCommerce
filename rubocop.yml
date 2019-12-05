@@ -9,6 +9,7 @@ AllCops:
     - app/channels/**/*
     - app/jobs/**/*
     - node_modules/**/*
+    - app/controllers/users/**/*
     - Gemfile
     - Rakefile
     - config.ru

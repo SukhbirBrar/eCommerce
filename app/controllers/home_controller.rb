@@ -12,7 +12,7 @@ class HomeController < ApplicationController
                   Product.where(filter: 'Sale')
                 else
                   Product.where(filter: 'New')
-              end
+                end
 
     render :index
   end
